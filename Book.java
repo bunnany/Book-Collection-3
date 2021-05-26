@@ -16,6 +16,8 @@ public class Book
     private int quantity;
     private String image;
     static final String DEFAULT_IMAGE = "book.png";
+    
+    private double locX, locY;
 
     /**
      * Constructor for objects of class Book
@@ -72,8 +74,8 @@ public class Book
      * Display our image on our GUI
      */
     public void displayBook() {
-        double locX = 100;
-        double locY = 100;
+        locX = 100;
+        locY = 100;
         final double WIDTH = 100;
         final double HEIGHT = 100;
         
