@@ -37,7 +37,7 @@ public class Books
         
         this.currBookId = 4;    // initialise the book id
         
-        this.menu();
+        //this.menu();
     }
     
     /**

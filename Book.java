@@ -29,7 +29,11 @@ public class Book
         this.name = nm;
         this.author = auth;
         this.quantity = qty;
-        this.image = img;
+        if (img == null) {
+            this.image = DEFAULT_IMAGE; // Add default image if user clicks cancel
+        } else {         
+            this.image = img;
+        }
     }
 
     /**
