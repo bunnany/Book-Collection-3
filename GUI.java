@@ -8,6 +8,7 @@ import ecs100.*;
 public class GUI
 {
     private Books bk;   // declare books instance
+    private Book book;  // instance of book
     
     /**
      * Constructor for objects of class GUI
@@ -18,7 +19,8 @@ public class GUI
         bk = new Books();
         UI.initialise();
         UI.addButton("All", bk::printAll);
-        UI.addButton("Add", this::addBook);        
+        UI.addButton("Add", this::addBook);
+        UI.addButton("Find", this::findBook);
         UI.addButton("Quit", UI::quit);
     }
 
@@ -45,6 +47,21 @@ public class GUI
         // Increment the book ID count and add to hashmap
         bk.setBookId(INCREMENT);
         bk.addBook(name, author, quantity, imgFileName);
+    }
+    
+    /**
+     * Finds book based on name
+     * Prints out the qty if it finds it
+     */
+    public void findBook() {
+        String bookName = UI.askString("Name of book: ");
+        if (bk.findBook(bookName)) {
+            UI.println("Found book!");
+            book = bk.getBook();
+            UI.println("Qty: " + book.getQuantity());
+        } else {
+            UI.println("That book does not exist!");
+        }
     }
 }
 

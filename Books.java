@@ -14,6 +14,7 @@ public class Books
     // instance variables
     private HashMap<Integer, Book> booksMap;        // declaring the hashmap
     private int currBookId;                 // store the current id of book being added
+    private Book currBook;                  // store the instance of the current book
 
     /**
      * Constructor for objects of class Books
@@ -56,13 +57,30 @@ public class Books
     }
     
     /**
-     * Finds a book based on the id
-     * Should refactor to find on name
+     * Finds a book based on name
+     * sets the current book instance if found
+     * @return boolean false if not found     * 
      */
-    public void findBook() {
-        int bookId = UI.askInt("Id: ");     // Finds book on ID - change to title
+    public boolean findBook(String name) {
+        /*int bookId = UI.askInt("Id: ");     // Finds book on ID - change to title
         UI.println(booksMap.get(bookId).getName()); // prints out book name
         booksMap.get(bookId).displayBook();     // shows book cover on canvas
+        */
+       // Seach for book
+       for (int bookId : booksMap.keySet()) {
+           if (booksMap.get(bookId).getName().equals(name)) {
+               currBook = booksMap.get(bookId);
+               return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Getter for the current book instance
+     */
+    public Book getBook(){
+        return this.currBook;
     }
     
     /**
@@ -95,7 +113,7 @@ public class Books
             if (choice.equalsIgnoreCase("A")) {
                 //addBook();
             } else if (choice.equalsIgnoreCase("F")) {
-                findBook();
+                //findBook();
             } else if (choice.equalsIgnoreCase("P")) {
                 printAll();
             } else if (choice.equalsIgnoreCase("Q")) {
