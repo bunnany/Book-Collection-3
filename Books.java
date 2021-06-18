@@ -41,26 +41,17 @@ public class Books
     }
     
     /**
+     * Set bookId
+     * @param int amount to increment book id by
+     */
+    public void setBookId(int incrementor) {
+        this.currBookId = this.currBookId + incrementor;
+    }
+    
+    /**
      * Adds a book to the map
      */
-    public void addBook() {
-        final int MAX_QUANTITY = 99;
-        int quantity = -1;
-        
-        // Ask the user for details
-        String name = UI.askString("Title: ");
-        String author = UI.askString("Author: ");
-        
-        // check boundaries for the number of books added to stock
-        do {
-            quantity = UI.askInt("Quantity: ");
-        } while (0 > quantity || quantity > MAX_QUANTITY);
-        
-        // add a book image for display in the GUI
-        String imgFileName = UIFileChooser.open("Choose Image File: ");
-        
-        // Increment the book ID counter and add book to hashmap
-        currBookId++;
+    public void addBook(String name, String author, int quantity, String imgFileName) {
         booksMap.put(currBookId, new Book(currBookId, name, author, quantity, imgFileName));
     }
     
@@ -102,7 +93,7 @@ public class Books
             choice = UI.askString("Enter a choice: ");
             
             if (choice.equalsIgnoreCase("A")) {
-                addBook();
+                //addBook();
             } else if (choice.equalsIgnoreCase("F")) {
                 findBook();
             } else if (choice.equalsIgnoreCase("P")) {
