@@ -68,7 +68,7 @@ public class Books
         */
        // Seach for book
        for (int bookId : booksMap.keySet()) {
-           if (booksMap.get(bookId).getName().equals(name)) {
+           if (booksMap.get(bookId).getName().toLowerCase().equals(name)) {
                currBook = booksMap.get(bookId);
                return true;
             }
